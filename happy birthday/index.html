@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ucapan Ultah ke-28 💖</title>
+<style>
+    body, html {
+        margin: 0; padding: 0;
+        height: 100%;
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+        overflow: hidden;
+        text-align: center;
+    }
+    video.bg-video {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+    .overlay {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 20px;
+        background: rgba(0,0,0,0.4);
+        border-radius: 15px;
+        animation: fadeIn 2s ease-in-out;
+    }
+    img {
+        max-width: 200px;
+        border-radius: 15px;
+        margin: 10px;
+        animation: zoom 6s infinite alternate;
+    }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes zoom { from {transform: scale(1);} to {transform: scale(1.1);} }
 
+    /* Hati beterbangan */
+    .heart {
+        position: fixed;
+        bottom: -10px;
+        color: pink;
+        font-size: 24px;
+        animation: fly 5s linear infinite;
+    }
+    @keyframes fly {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Efek mesin tik */
+    #message {
+        font-size: 18px;
+        white-space: pre-line;
+        border-right: 3px solid white;
+        overflow: hidden;
+        display: inline-block;
+        animation: caret 1s infinite;
+    }
+    @keyframes caret { 50% { border-color: transparent; } }
+</style>
+</head>
+<body>
+
+<!-- Video Background -->
+<video class="bg-video" autoplay muted loop>
+    <source src="bg.mp4" type="video/mp4">
+</video>
+
+<!-- Musik -->
+<audio autoplay loop>
+    <source src="lagu.mp3" type="audio/mp3">
+</audio>
+
+<div class="overlay">
+    <h1>🎉 Selamat Ulang Tahun ke-28 Sayangku 💖</h1>
+    <img id="slideshow" src="foto1.jpg" alt="Foto">
+    <p id="message"></p>
+</div>
+
+<script>
+// Slideshow Foto
+let photos = ["foto1.jpg", "foto2.jpg", "foto3.jpg"];
+let index = 0;
+setInterval(() => {
+    index = (index + 1) % photos.length;
+    document.getElementById("slideshow").src = photos[index];
+}, 3000);
+
+// Efek Mesin Tik
+let text = `
+Hari ini kamu resmi 28 tahun 😍
+Semoga rezekimu lancar 💰, kesehatan selalu terjaga 💪, dan bahagia tanpa henti 🌸.
+
+Terima kasih sudah jadi pasangan terbaik dan teman bercandaku 🤭😂
+Semoga kita selalu bersama sampai tua, rambut putih semua 🤍.
+
+Doaku: semoga hubungan ini langgeng sampai akhir hayat 🙏💞
+I love you lebih dari kemarin, tapi kurang dari besok ❤️
+`;
+
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("message").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
+}
+typeWriter();
+
+// Hati beterbangan
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    heart.innerHTML = "💖";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
